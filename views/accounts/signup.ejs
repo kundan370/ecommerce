@@ -1,0 +1,31 @@
+<%- layout('layout') -%>
+
+<div class="row">
+  <div class="col-lg-6 col-md-offset-3">
+
+    <% if (errors.length > 0) { %>
+      <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%= errors %>
+      </div>
+    <% } %>
+
+    <form method="post">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" class="form-control" name="name" placeholder="Eg. Kundan Kumar" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" name="email" placeholder="Eg. kundan@xyz.com" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control" name="password" placeholder="* * * * *" />
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+</div>
