@@ -1,3 +1,7 @@
-body{
+body {
   padding-top: 100px;
+}
+
+#navbarGap {
+  margin-top: -4%;
 }

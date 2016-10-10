@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
+var crypto = require('crypto');
 var Schema = mongoose.Schema;
 
 /* The User Schema */
@@ -38,7 +39,16 @@ UserSchema.pre('save',function(next) {
 
 /* Comparing password from database and password entered by the user */
 UserSchema.methods.comparePassword = function (password) {
-  bcrypt.compareSync(password,this.password);
+  return bcrypt.compareSync(password,this.password);
+}
+
+UserSchema.methods.gravatar = function (size) {
+  if (!this.size)
+    size = 200;
+  if (!this.email)
+    return 'https://gravatar.com/avatar/?s' + size + '&d=retro';
+  var md5 = crypto.createHash('md5').update(this.email).digest('hex');
+  return 'https://gravatar.com/avatar/' + md5 + '?s' + size + '&d=retro';
 }
 
 module.exports = mongoose.model('User',UserSchema);
