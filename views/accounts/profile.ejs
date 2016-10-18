@@ -10,7 +10,7 @@
     <p>
       Email: <%= user.email %>
     </p>
-    <% if (user.address === "" || typeof user.address === undefined) { %>
+    <% if (user.address === "" || user.address === undefined) { %>
       <p>
         Address: <span style="color:#c0392b; font-weight:bold">You have no address yet !</span>
       </p>
